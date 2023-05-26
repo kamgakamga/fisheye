@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ajouter/Supprimer un élément d'un tableau</title>
+</head>
+<body>
+	<button id="button">Ajouter/Supprimer un élément</button>	
+	<p id="contenu"></p>
+        <ul class="items">
+                <li class="item">element 1</li>
+                <li class="item">element 2</li>
+                <li class="item">element 3</li>
+                <li class="item">element 4</li>
+                <li class="item">element 5</li>
+        </ul>
+        <script>
+
+               let elements = document.querySelectorAll('.item'); 
+               console.log(elements);
+
+                for (let i = 0; i < elements.length; i++) {
+                        const element = elements[i];
+                        let ajout = true;
+                        var tableau = [];
+              let addOrMoveElements = function () {
+                       if (ajout && tableau.length > 0) {
+                if (tableau.includes(this.textContent)) {
+                         deleteElementToArray(tableau,this.textContent);
+                         console.log(tableau);
+                }else {
+                         tableau.push(this.textContent);
+                         console.log(tableau); 
+                  }
+               }else {
+                        tableau.push(this.textContent); 
+                        console.log(tableau);
+                  }
+                }      
+                    console.log("dans la boucle for");
+                    element.addEventListener("click",addOrMoveElements);       
+                }
+                function deleteElementToArray(tableau,element) {
+                          const index = tableau.indexOf(element);
+                          tableau.splice(index,1);
+                          console.log("element: "+element+" supprimer avec succes!");
+                        }
+	</script>
+</body>
+</html>

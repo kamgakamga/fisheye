@@ -1,0 +1,67 @@
+$couleur_primaire:#901C1C;
+$couleur_secondaire:#DB8876;
+$couleur_tertiaire:#C4C4C4;
+$couleur_blanche:#FFFFFF;
+$couleur_noir:#000000;
+$couleur_primaire_claire:#D3573C;
+$couleur_tertiaire__fonce:#525252;
+$size_photographe:40px;
+
+.input{
+       padding: 15px 0px 15px 10px;
+       border-radius: 5px; 
+}
+.realisation__item{
+        // border: 1px solid #ccc;
+        width: 30%;
+        &__img__container{
+                // border: 1px solid #ccc;
+                width: 100%;
+                height: 300px;
+                overflow: hidden;
+                border-radius: 5px;
+                &__img{
+                   width: 100%; 
+                   height: auto;       
+                }
+        }
+        &__detail{
+                display: flex;
+                // border: 1px solid #ccc; 
+                width: 100%; 
+                justify-content: space-between;
+                color: #901C1C;
+                
+                &__like{
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;  
+                      &__compteur{
+                        display: inline-block;
+                        margin-right: 10px;
+                      } 
+                }
+        }
+
+        
+}
+
+
+.engage{
+        color: $couleur_blanche;
+        background-color: $couleur_primaire;
+        padding: 15px;
+        width: 100px;
+        border-radius: 5px;
+        font-family: sans-serif;
+        font-weight: 500;
+}
+.contacte{
+        color: $couleur_blanche;
+        background-color: $couleur_primaire;
+        padding: 15px;
+        width: 120px;
+        border-radius: 5px;
+        font-family: sans-serif;
+        font-weight: 500;
+}

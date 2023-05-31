@@ -1,15 +1,14 @@
+const promisseData = await fetch("./../assets/datas/data.json");
+const data= await promisseData.json();
+ const allPhotographes = data.photographers;
 
-const promissedata= await fetch("./../assets/datas/data.json");
-const data= await promissedata.json();
+ const AllMedias = data.media;
 
-const photographes = data.photographers;
-const media = data.media;
-
-function getAllMedia() {
-        return media;
-}
 function getAllPhotographe() {
-        return photographes;
+        return allPhotographes ;
+}
+function getAllMedia() {
+        return AllMedias ;
 }
 
 export {getAllMedia}

@@ -58,6 +58,17 @@
   background-color: #901C1C;
   padding: 15px;
   width: 120px;
+  border-bottom: 1px solid #FFFFFF;
+  border-radius: 5px;
+  font-family: sans-serif;
+  font-weight: 500;
+}
+.trier__item {
+  color: #FFFFFF;
+  background-color: #901C1C;
+  padding: 15px;
+  width: 120px;
+  border-bottom: 1px solid #FFFFFF;
   border-radius: 5px;
   font-family: sans-serif;
   font-weight: 500;
@@ -91,4 +102,24 @@
 }
 .likes, .price{
   display:inline-block;
+}
+
+.trier{
+  background-color: #901C1C;
+  width: 11%;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.trier__item {
+  color: #FFFFFF;
+  background-color: #901C1C;
+  padding: 10px;
+  width: 100px;
+  border-bottom: 1px solid #FFFFFF;
+  font-family: sans-serif;
+  font-weight: 500;
 }

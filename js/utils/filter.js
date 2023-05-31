@@ -99,6 +99,18 @@ function f(event) {
            // event.target.classList.add('classe-a-ajouter-sur-l-element-clique');  
 }
 
+function getPhotographeId(location) {
+        console.log('=======>>',new URL(location.href).searchParams.get("id"));
+        return new URL(location.href).searchParams.get("id");
+}
+
+function splitWord(sentence, position) {
+        const chaine = sentence;
+        let tableau;
+         tableau = chaine.split(" ");
+         return tableau[position];
+
+}
 
 export {addDieseToTag}
 export {moveDieseToTag}
@@ -109,3 +121,5 @@ export {deleteElementToArray}
 export {buidMenuFilter}
 export {buildArrayToSearch}
 export {f}
+export {getPhotographeId}
+export {splitWord}

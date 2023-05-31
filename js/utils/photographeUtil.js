@@ -11,32 +11,33 @@ function builPhotographeTags(tags){
         }
 }
 
-function photographeItem(name, description, price, image,tags) {
+function photographeItem(photographe) {
 
         let tagItem = "";
-               for(let i = 0; i< tags.length; i++) {
-                   tagItem += "<li class=\"photographe__detail__container__tag__item\">#"+tags[i]+"</li>";
+               for(let i = 0; i< photographe.tags.length; i++) {
+                   tagItem += "<li class=\"photographe__detail__container__tag__item\">#"+photographe.tags[i]+"</li>";
                 }
 
         const articlePhotographe = document.createElement("article");
         articlePhotographe.classList.add("photographe__item");
-
         articlePhotographe.innerHTML = ` <div class="photographe__container__photo">
-                              <a href="./app/photographe.html" class="lien">
-                                      <img src="./assets/img/PhotographersIDPhotos/${image}" alt="photo de profile du photographe${name}" class="photographe__container__photo__img">
+                              <a href="./photographe.html?id=${photographe.id}" class="lien">
+                                      <img src="./assets/img/PhotographersIDPhotos/${photographe.portrait}" alt="photo de profile du photographe${name}" class="photographe__container__photo__img">
                               </a></div>
                                <div class="photographe__detail__container">
-                               <p class="photographe__detail__container__name">${name}</p>
+                               <p class="photographe__detail__container__name">${photographe.name}</p>
                                <div class="photographe__detail__container__description">
-                                       <p class="photographe__detail__container__description__texte">${description}</p>
-                                       <p class="photographe__detail__container__description__price">${price}<strong>€</strong>/jour</p>
+                                       <p class="photographe__detail__container__description__localisation">${photographe.country}, ${photographe.city}</p>
+                                       <p class="photographe__detail__container__description__texte">${photographe.tagline}</p>
+                                       <p class="photographe__detail__container__description__price">${photographe.price}<strong>€</strong>/jour</p>
                                </div>
                                <ul class="photographe__detail__container__tags">
                                ${tagItem}
                                </ul>
                                </div>`; 
-                               document.querySelector(".photographes").appendChild(articlePhotographe);
+                           document.querySelector(".photographes").appendChild(articlePhotographe);
         }
+
 
 
 function realisationPhotographeItem(item,folder) {
@@ -59,11 +60,11 @@ function realisationPhotographeItem(item,folder) {
 
 function getAllMediaByPhotographeID(allTags, photographeId) {
         return  allTags.filter((item) => {
-             return   item.photographerId === photographeId; });    
+             return   item.photographerId == photographeId; });    
      }
 function getPhotographeByID(allPhotographes,id) {
         return  allPhotographes.filter((item) => {
-             return   item.id === id; });    
+             return   item.id == id; });    
      }
 
 function buildStatistiquePhotographe(totalLikes, salaryPerDay) {
@@ -79,10 +80,28 @@ function buildStatistiquePhotographe(totalLikes, salaryPerDay) {
                     document.querySelector(".footer").appendChild(stat);
 }
      
+function buildFilter() {
+        const title = document.createElement("h3");
+        title.innerHTML = `Trier par:`;
+
+        const elements = document.createElement("div");
+        elements.innerHTML = `<div class="trier__item">
+                                        Popularité
+                                </div>
+                                <div class="trier__item">
+                                        Date
+                                </div>
+                                <div class="trier__item">
+                                         Titre
+                                </div>`;
+        document.querySelector(".filter-section").appendChild(title);
+        document.querySelector(".filter-section").appendChild(elements);    
+}
         export {builPhotographeTags}
         export {photographeItem}
         export {realisationPhotographeItem}
         export {getAllMediaByPhotographeID}
         export {buildStatistiquePhotographe}
         export {getPhotographeByID}
+        export {buildFilter}
    

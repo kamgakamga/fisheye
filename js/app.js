@@ -64,7 +64,7 @@ main.appendChild(sectionPhotographe);
 
 for (let i = 0; i < photographes.length; i++) {
         let photographe = photographes[i];
-        photographeItem(photographe.name,photographe.tagline,photographe.price,photographe.portrait,photographe.tags);
+        photographeItem(photographe);
 
 }
 
@@ -149,8 +149,6 @@ for (let i = 0; i < photographes.length; i++) {
         const ordrePages = document.querySelectorAll('.photographe__item');
         ordrePages.forEach((page) => {
                 page.addEventListener('click', (event) => {
-                        document.getElementsByClassName(".lien").href +=`?id=2`;
-                        //window.location.href = "http://127.0.0.1:5500/composants.html";  
                       });
                 });
       //https://www.youtube.com/watch?v=cO8ANWHqw0o   

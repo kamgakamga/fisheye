@@ -1,8 +1,10 @@
 // section des variables.
 
 $couleur_primaire:#901C1C;
+$couleur_primaires:#D3573C;
 $couleur_secondaire:#DB8876;
 $couleur_tertiaire:#C4C4C4;
+$couleur_tertiaires:#757575;
 $couleur_blanche:#FFFFFF;
 $couleur_noir:#000000;
 $size_photographe:37px;
@@ -12,15 +14,26 @@ $size_photographe:37px;
         font-size: $taille;
       }  
 @mixin traiter-liste() {
-        border: 1px solid $couleur_primaire;
+                        border: 1px solid $couleur_tertiaires;
                         padding:0 8px;
                         list-style: none;
                         border-radius: 15px;
                         margin: 0 2px 0 2px;
+                        color: $couleur_primaire;
+      }  
+      
+@mixin basic-properties($taille-police,$taille-hauteur) {
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: $taille-police;
+        line-height: $taille-hauteur;
+        text-align: center;
       }  
 
 @mixin filter-hover(){
-        background-color: #901C1C;
+        cursor: pointer;
+        background-color: $couleur_primaire;
         color: $couleur_blanche;
 }
 
@@ -30,11 +43,12 @@ $size_photographe:37px;
       padding: 0;
 }
 img{
+       
         object-fit: cover;
         object-position: center;
 }
 h2,p{
-        padding-top: 10px;
+        // padding-top: 10px;
         text-align: center;
 }
 h2{
@@ -76,7 +90,7 @@ p{
                         // list-style: none;
                         // border-radius: 15px;
                         // margin: 0 2px 0 2px;
-                        cursor: pointer;
+                      
                       //  background-color: #901C1C;
                         
                         @include traiter-liste();
@@ -103,41 +117,66 @@ main{
         flex-wrap:wrap ;
         justify-content: space-around;
         padding: 30px;
-        .photographe{
+        .photographe__item{
                 width:  25%;
                 margin: 30px;
                 // display: flex;
                 // flex-direction:row-reverse ;
-        }
-        .photographe__container{
-                border-radius: 50%;
-                overflow:hidden;
-                width: 100%;
-                height: 250px;
-        }
-        .photographe__container__img{
-                width: 100%;
-                object-fit: cover;
-                object-position: center;
-        }
 
-}
-.tags__container{
-        width: 95%;
-                        color: $couleur_primaire;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-        &__item{
-                cursor: pointer;
-                @include traiter-liste();
-        }
-        &__item:hover{
-                @include filter-hover();
-        }
+                .photographe__container__photo{
+                        border-radius: 50%;
+                        overflow:hidden;
+                        width: 100%;
+                        height: 240px;
         
-}
+                        &__img{
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                object-position: center;
+                        }
+                }
+                .photographe__detail__container{
+                       .photographe__detail__container__name{
+                          color:$couleur_primaires ;
+                          @include basic-properties(36px,47px)
+                       } 
+                       .photographe__detail__container__description{
 
+                        .photographe__detail__container__description__localisation{
+                                color:$couleur_primaire ;
+                                @include basic-properties(13px,16px)
+                        }
+                        .photographe__detail__container__description__texte{
+                                color:$couleur_noir ;
+                                @include basic-properties(10px,13px)
+                        }
+                       }
+                       .photographe__detail__container__description__price{
+                                color:$couleur_tertiaires ;
+                                @include basic-properties(9px,12px);
+                                margin-bottom : 7px;
+                       }
+
+                       &__tags{
+
+                        display: flex;
+                        justify-content: center;
+                           .photographe__detail__container__tag__item{
+                                @include traiter-liste();
+                                
+                           }
+                           .photographe__detail__container__tag__item:hover{
+                                @include filter-hover();
+                           }
+                       }
+
+                }
+                
+        }
+       
+
+}
 
 
 

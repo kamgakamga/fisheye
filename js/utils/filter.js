@@ -111,6 +111,20 @@ function splitWord(sentence, position) {
          return tableau[position];
 
 }
+// function splitWords(sentence, position) {
+//         const chaine = sentence;
+//         let tableau;
+//          tableau = chaine.split("\.");
+//          return tableau[position];
+
+// }
+
+function buildHeader() {
+const divContainer = document.createElement("div");
+divContainer.classList.add("logo__container");
+     divContainer.innerHTML =`<img src="./assets/img/logo/fisheye.png" alt="logo fischye"classe ="logo__container__img"/>`;
+     document.querySelector(".header").appendChild(divContainer);    
+}
 
 export {addDieseToTag}
 export {moveDieseToTag}
@@ -123,3 +137,4 @@ export {buildArrayToSearch}
 export {f}
 export {getPhotographeId}
 export {splitWord}
+export {buildHeader}

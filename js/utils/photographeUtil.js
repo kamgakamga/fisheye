@@ -1,5 +1,4 @@
 
-
 function builPhotographeTags(tags){
         for (let i = 0; i < tags.length; i++) {
                 const tag = tags[i];
@@ -41,12 +40,30 @@ function photographeItem(photographe) {
 
 
 function realisationPhotographeItem(item,folder) {
-
+        // const extension = splitWords(item.image,1);
         const realisationItemContainer = document.createElement("div");
         realisationItemContainer.classList.add("realisation__item");
+        if(typeof item.image === "undefined"){
+                realisationItemContainer.innerHTML = `<div class="realisation__item__img__container">
+                                                          <video controls>
+                                                                <source src="./../assets/img/${folder}/${item.video}" type="video/mp4">
+                                                                <p>Votre navigateur ne supporte pas la lecture de vidéo HTML5.</p>
+                                                          </video>
+                                                      </div>
+                                                      <div class="realisation__item__detail">
+                                                         <p class="realisation__item__detail__tagname">${item.title}</p>
+                                                           <div class="realisation__item__detail__like">
+                                                             <span class="realisation__item__detail__like__compteur">${item.likes}</span>
+                                                             <span class="realisation__item__detail__like__img"><i class="fas fa-heart"></i></span>
+                                                           </div>
+                                                       </div>`;
+                                        document.querySelector(".realisations").appendChild(realisationItemContainer);
+
+
+        }else{
 
         realisationItemContainer.innerHTML = `<div class="realisation__item__img__container">
-                                                   <img src="./../assets/img/${folder}/${item.image}" class="realisation__item__img" alt="">
+                                                   <img src="./../assets/img/${folder}/${item.image}" class="realisation__item__img" alt="une réalisation de ${item.image}">
                                               </div>
                                               <div class="realisation__item__detail">
                                                      <p class="realisation__item__detail__tagname">${item.title}</p>
@@ -57,7 +74,7 @@ function realisationPhotographeItem(item,folder) {
                                               </div>`;
                                         document.querySelector(".realisations").appendChild(realisationItemContainer);
 }
-
+}
 function getAllMediaByPhotographeID(allTags, photographeId) {
         return  allTags.filter((item) => {
              return   item.photographerId == photographeId; });    
@@ -85,14 +102,15 @@ function buildFilter() {
         title.innerHTML = `Trier par:`;
 
         const elements = document.createElement("div");
+        elements.classList.add("trier");
         elements.innerHTML = `<div class="trier__item">
-                                        Popularité
+                                  Popularité <i class="fas fa-angle-left"></i>
                                 </div>
                                 <div class="trier__item">
-                                        Date
+                                        Date <i class="fas fa-angle-left"></i>
                                 </div>
                                 <div class="trier__item">
-                                         Titre
+                                         Titre <i class="fas fa-angle-left"></i>
                                 </div>`;
         document.querySelector(".filter-section").appendChild(title);
         document.querySelector(".filter-section").appendChild(elements);    

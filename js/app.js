@@ -67,43 +67,6 @@ for (let i = 0; i < photographes.length; i++) {
         photographeItem(photographe);
 
 }
-
-        // const photographeArticle = document.createElement("article");
-        // photographeArticle.classList.add("photographe");
-        // const photographeImgContainer = document.createElement("div");
-        // photographeImgContainer.classList.add("photographe__container");
-        // const photographeImg = document.createElement("img");
-        // photographeImg.classList.add("photographe__container__img");
-        // photographeImg.src = `./assets/img/PhotographersIDPhotos/${photographes[i].portrait}`;
-        // photographeImg.alt= `portrait du photographe ${photographes[i].name}`;
-        // const photographeDatailContainer = document.createElement("div");
-        // const photographeName = document.createElement("h2");
-        // photographeName.innerText= `${photographes[i].name}`;
-        // const photographeCountry = document.createElement("p");
-        // photographeCountry.innerText=`${photographes[i].city}, ${photographes[i].country}`;
-        // const photographeDescription = document.createElement("p");
-        // photographeDescription.innerText =`${photographes[i].tagline}`
-        // const photographeSalary = document.createElement("p");
-        // photographeSalary.innerHTML =`${photographes[i].price} <strong>€</strong>/jour`;
-        // const photographeTags = document.createElement("ul");
-        // photographeTags.classList.add("tags__container");
-        // const tags = addDieseToTag(photographes[i].tags);
-        // for (let i = 0; i < tags.length; i++) {
-        //         const tagLi = document.createElement("li");
-        //         tagLi.classList.add("tags__container__item");
-        //         tagLi.innerText = `${tags[i]}`;
-        //         photographeTags.appendChild(tagLi); 
-        // }
-
-        // photographeImgContainer.appendChild(photographeImg);
-        // photographeDatailContainer.appendChild(photographeName);
-        // photographeDatailContainer.appendChild(photographeDescription);
-        // photographeDatailContainer.appendChild(photographeSalary);
-        // photographeDatailContainer.appendChild(photographeTags);
-        // photographeArticle.appendChild(photographeImgContainer);
-        // photographeArticle.appendChild(photographeDatailContainer);
-        // sectionPhotographe.appendChild(photographeArticle);                               
-
         let elements = document.querySelectorAll('.header__menu__filter__item'); 
         console.log("--------------");
         console.log(elements);
@@ -142,43 +105,14 @@ for (let i = 0; i < photographes.length; i++) {
                         event.target.classList.add("photographe__click");
                         cptClick ++;
                 }
-            
+
+               //  document.querySelector
           });
         });
 
         const ordrePages = document.querySelectorAll('.photographe__item');
         ordrePages.forEach((page) => {
                 page.addEventListener('click', (event) => {
+                        // document.querySelector(".photographes").innerHTML="";
                       });
                 });
-      //https://www.youtube.com/watch?v=cO8ANWHqw0o   
-
-//     function buildPhotographe(){
-//         const photographeArticle = document.createElement("article");
-//         const photographeImgContainer = document.createElement("div");
-//         const photographeImg = document.createElement("img");
-//         const photographeDatailContainer = document.createElement("div");
-//         const photographeName = document.createElement("h2");
-//         const photographeDescription = document.createElement("p");
-//         const photographeSalary = document.createElement("p");
-//         const photographeTags = document.createElement("p");
-
-//         photographeImgContainer.appendChild(photographeImg);
-//         photographeDatailContainer.appendChild(photographeName);
-//         photographeDatailContainer.appendChild(photographeDescription);
-//         photographeDatailContainer.appendChild(photographeSalary);
-//         photographeDatailContainer.appendChild(photographeTags);
-//         photographeArticle.appendChild(photographeImgContainer);
-//         photographeArticle.appendChild(photographeDatailContainer);
-//         return main.appendChild(photographeArticle);
-// }
-
-
-//  function deleteElementToArray(tableau,element) {
-//         const index = tableau.indexOf(element);
-//         tableau.splice(index,1);
-// }
-//let ajout =true;
-//let tableau =[];
-//buildArrayToSearch(ajout, tableau);
-//addDieseToTag(elements);

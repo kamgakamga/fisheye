@@ -103,13 +103,13 @@ $couleur_noir:#000000;
       }
       .filter-section{
             .trier{
-              background-color:$couleur_blanche;
+              background-color:$couleur_primaire;
               width: 11%;
               border-radius: 5px;
               cursor: pointer;
               &__item{
                     color: $couleur_blanche;
-                    background-color: $couleur_blanche;
+                    background-color: $couleur_primaire;
                     width: 98%;
                     font-family: sans-serif;
                     font-weight: 500;

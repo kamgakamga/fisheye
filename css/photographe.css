@@ -99,14 +99,14 @@
 }
 
 .filter-section .trier {
-  background-color: #FFFFFF;
+  background-color: #901C1C;
   width: 11%;
   border-radius: 5px;
   cursor: pointer;
 }
 .filter-section .trier__item {
   color: #FFFFFF;
-  background-color: #FFFFFF;
+  background-color: #901C1C;
   width: 98%;
   font-family: sans-serif;
   font-weight: 500;

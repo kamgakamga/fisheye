@@ -1,4 +1,5 @@
 import {photographeItem} from "./utils/photographeUtil.js";
+import {displayPhotographes} from "./utils/photographeUtil.js";
 import {getAllPhotographe} from "./utils/data.js";
 import {getAllMedia} from "./utils/data.js";
 import {addDieseToTag} from "./utils/filter.js";
@@ -6,6 +7,7 @@ import {moveDieseToTag} from "./utils/filter.js";
 import {moveDieseToTags} from "./utils/filter.js";
 import {getAllTagsFilter} from "./utils/filter.js";
 import {collecteAllTags} from "./utils/filter.js";
+import {findPhotographesByTags} from "./utils/filter.js";
 import {deleteElementToArray} from "./utils/filter.js";
 import {buidMenuFilter} from "./utils/filter.js";
 import {buildArrayToSearch} from "./utils/filter.js";
@@ -58,15 +60,11 @@ const sectionPhotographe = document.createElement("section");
 sectionPhotographe.classList.add("photographes");
 main.appendChild(sectionPhotographe);
 
+//affichage du profile des photgraphes
+displayPhotographes(photographes);
 
 
 
-
-for (let i = 0; i < photographes.length; i++) {
-        let photographe = photographes[i];
-        photographeItem(photographe);
-
-}
         let elements = document.querySelectorAll('.header__menu__filter__item'); 
         console.log("--------------");
         console.log(elements);
@@ -81,6 +79,7 @@ for (let i = 0; i < photographes.length; i++) {
                 alert("hello world !!!")  
         }
         let tableau =[];
+        let t =[];
         const filtres = document.querySelectorAll('.header__menu__filter__item');
         filtres.forEach((filtre) => {
         let cptClick = 0;
@@ -105,10 +104,13 @@ for (let i = 0; i < photographes.length; i++) {
                         event.target.classList.add("photographe__click");
                         cptClick ++;
                 }
-
-               //  document.querySelector
+                 let tags =  moveDieseToTags(tableau);
+                 const resultat =  findPhotographesByTags(photographes,tags);
+                 document.querySelector(".photographes").innerHTML="";
+                 displayPhotographes(resultat);
           });
         });
+
 
         const ordrePages = document.querySelectorAll('.photographe__item');
         ordrePages.forEach((page) => {

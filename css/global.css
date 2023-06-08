@@ -71,7 +71,7 @@ main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   padding: 30px;
 }
 .photographes .photographe__item {
@@ -141,6 +141,11 @@ main {
 }
 .photographes .photographe__item .photographe__detail__container__tags .photographe__detail__container__tag__item:hover {
   cursor: pointer;
+  background-color: #901C1C;
+  color: #FFFFFF;
+}
+
+.photographe__click {
   background-color: #901C1C;
   color: #FFFFFF;
 }

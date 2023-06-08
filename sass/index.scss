@@ -115,7 +115,7 @@ main{
         display: flex;
         flex-direction: row;
         flex-wrap:wrap ;
-        justify-content: space-around;
+       justify-content: space-evenly;
         padding: 30px;
         .photographe__item{
                 width:  25%;
@@ -178,5 +178,8 @@ main{
 
 }
 
-
+.photographe__click{
+        background-color: $couleur_primaire;
+        color: $couleur_blanche;
+}
 

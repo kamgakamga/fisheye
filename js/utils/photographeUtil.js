@@ -10,13 +10,7 @@ function builPhotographeTags(tags){
         }
 }
 
-function photographeItem(photographe) {
-
-        let tagItem = "";
-               for(let i = 0; i< photographe.tags.length; i++) {
-                   tagItem += "<li class=\"photographe__detail__container__tag__item\">#"+photographe.tags[i]+"</li>";
-                }
-
+function buildProfileItem(photographe,tagItem) {
         const articlePhotographe = document.createElement("article");
         articlePhotographe.classList.add("photographe__item");
         articlePhotographe.innerHTML = ` <div class="photographe__container__photo">
@@ -35,50 +29,87 @@ function photographeItem(photographe) {
                                </ul>
                                </div>`; 
                            document.querySelector(".photographes").appendChild(articlePhotographe);
+}
+
+function photographeItem(photographe) {
+        let tagItem = "";
+        for(let i = 0; i< photographe.tags.length; i++) {
+            tagItem += "<li class=\"photographe__detail__container__tag__item\">#"+photographe.tags[i]+"</li>";
+         }
+       
+        buildProfileItem(photographe,tagItem);
         }
 
 
+function displayPhotographes(photographes) {
+        for (let i = 0; i < photographes.length; i++) {
+                let photographe = photographes[i];
+                photographeItem(photographe);
+        
+        } 
+}
+
 
 function realisationPhotographeItem(item,folder) {
-        // const extension = splitWords(item.image,1);
         const realisationItemContainer = document.createElement("div");
         realisationItemContainer.classList.add("realisation__item");
         if(typeof item.image === "undefined"){
-                realisationItemContainer.innerHTML = `<div class="realisation__item__img__container">
-                                                          <video controls>
-                                                                <source src="./../assets/img/${folder}/${item.video}" type="video/mp4">
-                                                                <p>Votre navigateur ne supporte pas la lecture de vidéo HTML5.</p>
-                                                          </video>
-                                                      </div>
-                                                      <div class="realisation__item__detail">
-                                                         <p class="realisation__item__detail__tagname">${item.title}</p>
-                                                           <div class="realisation__item__detail__like">
-                                                             <span class="realisation__item__detail__like__compteur">${item.likes}</span>
-                                                             <span class="realisation__item__detail__like__img"><i class="fas fa-heart"></i></span>
-                                                           </div>
-                                                       </div>`;
-                                        document.querySelector(".realisations").appendChild(realisationItemContainer);
-
-
+                buidVideoRealisation(item,folder,realisationItemContainer);  
         }else{
+                buidImageRealisation(item,folder,realisationItemContainer);
+        }
+}
 
+/**
+ * construire la realisation d'un photographe  cas d'une vidéo
+ *  @param{*} item 
+ *  @param{*} folder
+ *  @param{*} realisationItemContainer
+ */
+function buidVideoRealisation(item,folder,realisationItemContainer){
         realisationItemContainer.innerHTML = `<div class="realisation__item__img__container">
-                                                   <img src="./../assets/img/${folder}/${item.image}" class="realisation__item__img" alt="une réalisation de ${item.image}">
-                                              </div>
-                                              <div class="realisation__item__detail">
-                                                     <p class="realisation__item__detail__tagname">${item.title}</p>
-                                                     <div class="realisation__item__detail__like">
-                                                         <span class="realisation__item__detail__like__compteur">${item.likes}</span>
-                                                         <span class="realisation__item__detail__like__img"><i class="fas fa-heart"></i></span>
-                                                     </div>
-                                              </div>`;
-                                        document.querySelector(".realisations").appendChild(realisationItemContainer);
+        <video controls>
+              <source src="./../assets/img/${folder}/${item.video}" type="video/mp4">
+              <p>Votre navigateur ne supporte pas la lecture de vidéo HTML5.</p>
+        </video>
+    </div>
+    <div class="realisation__item__detail">
+       <p class="realisation__item__detail__tagname">${item.title}</p>
+         <div class="realisation__item__detail__like">
+           <span class="realisation__item__detail__like__compteur">${item.likes}</span>
+           <span class="realisation__item__detail__like__img"><i class="fas fa-heart"></i></span>
+         </div>
+     </div>`;
+document.querySelector(".realisations").appendChild(realisationItemContainer);
+
 }
+
+
+/**
+ * construire la realisation d'un photographe  cas d'une image
+ *  @param{*} item 
+ *  @param{*} folder
+ *  @param{*} realisationItemContainer
+ */
+function buidImageRealisation(item,folder,realisationItemContainer){
+        realisationItemContainer.innerHTML = `<div class="realisation__item__img__container">
+        <img src="./../assets/img/${folder}/${item.image}" class="realisation__item__img" alt="une réalisation de ${item.image}">
+   </div>
+   <div class="realisation__item__detail">
+          <p class="realisation__item__detail__tagname">${item.title}</p>
+          <div class="realisation__item__detail__like">
+              <span class="realisation__item__detail__like__compteur">${item.likes}</span>
+              <span class="realisation__item__detail__like__img"><i class="fas fa-heart"></i></span>
+          </div>
+   </div>`;
+document.querySelector(".realisations").appendChild(realisationItemContainer);
 }
+
 function getAllMediaByPhotographeID(allTags, photographeId) {
         return  allTags.filter((item) => {
              return   item.photographerId == photographeId; });    
      }
+
 function getPhotographeByID(allPhotographes,id) {
         return  allPhotographes.filter((item) => {
              return   item.id == id; });    
@@ -115,11 +146,15 @@ function buildFilter() {
         document.querySelector(".filter-section").appendChild(title);
         document.querySelector(".filter-section").appendChild(elements);    
 }
+
+
+
         export {builPhotographeTags}
         export {photographeItem}
         export {realisationPhotographeItem}
         export {getAllMediaByPhotographeID}
         export {buildStatistiquePhotographe}
         export {getPhotographeByID}
+        export {displayPhotographes}
         export {buildFilter}
    

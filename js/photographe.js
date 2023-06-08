@@ -9,15 +9,18 @@ import {getPhotographeByID} from "./utils/photographeUtil.js";
 import { getPhotographeId } from "./utils/filter.js";
 import { buildHeader } from "./utils/filter.js";
 import { splitWord } from "./utils/filter.js";
+import { like } from "./utils/like.js";
+import { unLike } from "./utils/like.js";
+import { getMediaById } from "./utils/media.js";
 
- const media = getAllMedia();
+ const medias = getAllMedia();
  const photographes = getAllPhotographe();
  const photographeId = getPhotographeId(location);
  console.log("************************");
  console.log('ID:',photographeId);
  console.log("************************");
 
- console.log(media);
+ console.log(medias);
 const body = document.body;
 const header = document.createElement("header");
 header.classList.add("header");
@@ -46,17 +49,15 @@ main.appendChild(sectionRealisationDesPhotographes);
 body.appendChild(footer);
 buildFilter();
 // les realisations du photographe sur le quel on vient de dblclique. 
-const currentPhotographeRealisations = getAllMediaByPhotographeID(media, photographeId);
+const currentPhotographeRealisations = getAllMediaByPhotographeID(medias, photographeId);
    console.log(currentPhotographeRealisations);
    let totalLikes = 0;
    let salaryPerDay = 0;
    const photographeTab = getPhotographeByID(photographes,photographeId);
    const photographe = photographeTab["0"];
-   console.log("************************");
-   console.log(photographeTab);
-   console.log("************************");
    const realisationPhotographeFolderImage = splitWord(photographe.name,0);
    photographeItem(photographe);
+
    document.querySelector(".photographe__item").appendChild(contact);
    for (let i = 0; i < currentPhotographeRealisations.length; i++) {
           const element = currentPhotographeRealisations[i];
@@ -65,10 +66,25 @@ const currentPhotographeRealisations = getAllMediaByPhotographeID(media, photogr
    }
   
    salaryPerDay += photographe.price;
-   console.log(photographe);
-   console.log(totalLikes);
    buildStatistiquePhotographe(totalLikes,salaryPerDay);
-     
-   console.log("=================================================");
-   console.log(new URL(location.href).searchParams.get("id"));
-   console.log("=================================================");
+
+   const mediaId = 8520927;
+ const media =  getMediaById(medias, mediaId);
+ 
+//   like(media[0]);
+
+const t = await fetch("http://127.0.0.1:3000/assets/datas/donnee.json");
+const n = await t.json();
+console.log(n);
+n.nom = "raoul";
+
+const options = {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+        },
+       body: JSON.stringify(n)
+};
+fetch("http://127.0.0.1:3000/assets/datas/donnee.json",options)
+.then(res => res.json())
+.then(data => console.log(data));

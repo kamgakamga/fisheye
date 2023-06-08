@@ -11,6 +11,9 @@ function moveDieseToTags(elements) {
         for (let i = 0; i < elements.length; i++) {
                unDieseTag.push(elements[i].replace("#","")); 
         }
+        console.log("..........................");
+        console.log(unDieseTag);
+        console.log("..........................");
         return unDieseTag;
 }
 function moveDieseToTag(element) {
@@ -126,6 +129,17 @@ divContainer.classList.add("logo__container");
      document.querySelector(".header").appendChild(divContainer);    
 }
 
+function findPhotographesByTags(allPhotographes, allTags) {
+        let responses = [];
+        for (let i = 0; i < allPhotographes.length; i++) {
+                const photographe = allPhotographes[i];
+                     if (allTags.every(item => photographe.tags.includes(item))) {
+                        responses.push(photographe);
+                     }
+        }
+        return responses;
+}
+
 export {addDieseToTag}
 export {moveDieseToTag}
 export {moveDieseToTags}
@@ -138,3 +152,4 @@ export {f}
 export {getPhotographeId}
 export {splitWord}
 export {buildHeader}
+export {findPhotographesByTags}

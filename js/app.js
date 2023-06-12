@@ -74,10 +74,6 @@ displayPhotographes(photographes);
         for (let i = 0; i < elements.length; i++) {
               let element = elements[i];      
         }    
-        // element.addEventListener("click",click );
-        function click() {
-                alert("hello world !!!")  
-        }
         let tableau =[];
         let t =[];
         const filtres = document.querySelectorAll('.header__menu__filter__item');

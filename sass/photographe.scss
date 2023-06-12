@@ -5,6 +5,7 @@ $couleur_tertiaire:#C4C4C4;
 $couleur_tertiaires:#757575;
 $couleur_blanche:#FFFFFF;
 $couleur_noir:#000000;
+$couleur_label: #312E2E;
 
 
 @keyframes rotation {
@@ -15,6 +16,12 @@ $couleur_noir:#000000;
     transform: rotate(359deg);
   }
 }
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .realisation-section{
         display: flex;
         flex-wrap: wrap;
@@ -34,7 +41,8 @@ $couleur_noir:#000000;
       }
       .realisation__item__img__container__img {
         width: 100%;
-        height: auto;
+        height: 100%;
+        cursor: pointer;
       }
       .realisation__item__detail {
         display: flex;
@@ -108,6 +116,7 @@ $couleur_noir:#000000;
               border-radius: 5px;
               cursor: pointer;
               &__item{
+                    // display: none;
                     color: $couleur_blanche;
                     background-color: $couleur_primaire;
                     width: 98%;
@@ -125,6 +134,16 @@ $couleur_noir:#000000;
           transform: rotate(90deg);
     }
 
+    .popularite{
+      display: block;
+    }
+    .date{
+      display: none;
+    }
+    .titre{
+      display: none;
+    }
+
 .header{
   margin: 0;
   padding: 0;
@@ -132,6 +151,7 @@ $couleur_noir:#000000;
 .container{
 // background-color: #000000;
   padding: 0 50px 0 50px;
+  position: relative;
 }
 .photographes{
   width: 100%;
@@ -172,6 +192,7 @@ $couleur_noir:#000000;
                   .photographe__container__photo__img{
                     width: 100%;
                     height: 100%;
+                    cursor: pointer;
                   }
                 }
         }
@@ -193,6 +214,7 @@ $couleur_noir:#000000;
                 object-position: center;
                 width: 100%;
                 height: 100%;
+                cursor: pointer;
                }
     }
     .realisation__item__detail{
@@ -200,4 +222,289 @@ $couleur_noir:#000000;
     }
   }
 
+  .fa-heart:hover {
+    cursor: pointer;
+  }
 }
+// .my-modal{
+//   display: none;
+//    .modal-content{
+//     //  display: flex;
+//     //  flex-wrap: wrap;
+//     //  justify-content: space-between;
+//     //  align-items: center;
+    
+//    }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .container{
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-between;
+//   justify-items: center;
+// }
+.column {
+  padding: 0 8px;
+}
+
+// .row:after {
+//   content: "";
+//   display: table;
+//   clear: both;
+// }
+
+// /* Create four equal columns that floats next to eachother */
+// .column {
+//   float: left;
+//   width: 30%;
+//   height: 300 px;
+//   // margin: 5px;
+// }
+
+// /* The Modal (background) */
+.modales {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 25px;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: $couleur_primaires;
+}
+
+// /* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  height: 90%;
+  width: 90% ;
+//  max-width: 1200px;
+}
+
+// /* The Close Button */
+.close {
+  color: $couleur_primaire;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: $couleur_tertiaire;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+// /* Hide the slides by default */
+.mySlides {
+  display: none;
+  height:100% ;
+  width:100% ;
+  // overflow: auto;
+  background-color: $couleur_blanche;
+}
+
+// /* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.prev{
+  transform: rotate(0deg);
+}
+// /* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+  transform: rotate(1.5turn);
+}
+
+// /* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(93, 90, 90, 0.8);
+}
+
+// /* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+// /* Caption text */
+// .caption-container {
+//   text-align: center;
+//   background-color: black;
+//   padding: 2px 16px;
+//   color: white;
+// }
+
+// img.demo {
+//   opacity: 0.6;
+// }
+
+// .active,
+// .demo:hover {
+//   opacity: 1;
+// }
+
+.mySlides img{
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+
+
+
+.form-content{
+  background-color: $couleur_primaires;
+  padding: 15px;
+  display: none;
+  // //flex-direction: column;
+  // align-content: center;
+  // align-items: center;
+}
+
+.contactez{
+  display: flex;
+  justify-content: space-between;
+  .fas{
+          color: $couleur_blanche;
+  }
+}
+
+.form-header{
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.form-group{
+  margin-bottom: 5px;
+}
+
+input{
+  border: none;
+  width: 599px;
+  height: 30px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  padding: 5px;
+}
+
+input[type="submit"]{
+  font-size: 18px;
+  width: 90px;
+  height: 40px;
+color: $couleur_blanche ; 
+background: $couleur_primaire; 
+}
+.form-contact{
+  width: 95%;
+}
+.form-group{
+  width: 100%;
+}
+label{
+  color: $couleur_label;
+  font-size: 25px;
+  margin-bottom: 3px;
+}
+textarea{
+  padding: 5px;
+  border-radius: 5px;
+  width: 599px;
+}
+
+.contactes {
+  display: none;
+  position: fixed;
+  z-index: 1;
+ // padding-top: 100px;
+  right: 50px;
+  left: 290px;
+  top: 20px;
+  bottom: 20px;
+  width: 55%;
+  height: 100%;
+  overflow: auto;
+  background-color: $couleur_primaires;
+}
+
+.videos{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.video{
+position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.video-icon{
+  cursor: pointer;
+  font-size: 50px;
+  position: absolute;
+  z-index: 1;
+  top: 45%;
+  bottom: 0;
+  left: 45%;
+  right: 0;
+  color:$couleur_blanche;
+}
+// .video-icon:active{
+//  z-index: -1;
+// }

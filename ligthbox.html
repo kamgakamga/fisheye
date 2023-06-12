@@ -57,12 +57,12 @@
                   <a class="next" onclick="plusSlides(1)">&#10095;</a>
               
                   <!-- Caption text -->
-                  <div class="caption-container">
+                  <!-- <div class="caption-container">
                     <p id="caption"></p>
-                  </div>
+                  </div> -->
               
                   <!-- Thumbnail image controls -->
-                  <div class="column">
+                  <!-- <div class="column">
                     <img class="demo" src="./assets/img/Tracy/Art_Mine.jpg" onclick="currentSlide(1)" alt="Nature">
                   </div>
               
@@ -77,18 +77,18 @@
                   <div class="column">
                     <img class="demo" src="./assets/img/Tracy/Event_Sparklers.jpg" onclick="currentSlide(4)" alt="Lights">
                   </div>
-                </div>
+                </div> -->
         </div>
         <!-- <script src="./js/ligthbox.js" type="module"></script> -->
         <script>
 
+// Open the Modal
 function openModal() {
-        console.log("OKkkkkkkkkkkk");
         document.getElementById("myModal").style.display = "block";
       }
       
-      // Close the Modal
-      function closeModal() {
+// Close the Modal
+function closeModal() {
         document.getElementById("myModal").style.display = "none";
       }
       
@@ -121,10 +121,7 @@ function openModal() {
         slides[slideIndex-1].style.display = "block";
         dots[slideIndex-1].className += " active";
         captionText.innerHTML = dots[slideIndex-1].alt;
-      }
-
-
-
+      } 
         </script>
 </body>
 </html>

@@ -1,0 +1,72 @@
+$couleur_primaire:#901C1C;
+$couleur_primaires:#D3573C;
+$couleur_secondaire:#DB8876;
+$couleur_tertiaire:#C4C4C4;
+$couleur_tertiaires:#757575;
+$couleur_blanche:#FFFFFF;
+$couleur_noir:#000000;
+$couleur_label: #312E2E;
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.form-content{
+        background-color: $couleur_primaires;
+        padding: 15px;
+        // display: flex;
+        // //flex-direction: column;
+        // align-content: center;
+        // align-items: center;
+}
+
+.contactez{
+        display: flex;
+        justify-content: space-between;
+        .fas{
+                color: $couleur_blanche;
+        }
+}
+
+.form-header{
+        font-size: 40px;
+        margin-bottom: 20px;
+     }
+.form-group{
+        margin-bottom: 5px;
+}
+
+input{
+        border: none;
+        width: 599px;
+        height: 30px;
+        border-radius: 5px;
+        background: #FFFFFF;
+        padding: 5px;
+}
+
+input[type="submit"]{
+        font-size: 18px;
+        width: 90px;
+        height: 40px;
+      color: $couleur_blanche ; 
+      background: $couleur_primaire; 
+}
+.form-contact{
+        width: 95%;
+}
+.form-group{
+        width: 100%;
+}
+label{
+        color: $couleur_label;
+        font-size: 25px;
+        margin-bottom: 3px;
+}
+textarea{
+        padding: 5px;
+        border-radius: 5px;
+        width: 599px;
+}

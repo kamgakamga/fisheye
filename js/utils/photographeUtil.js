@@ -1,3 +1,7 @@
+// import {openModal} from "../ligthbox.js";
+
+
+
 
 function builPhotographeTags(tags){
         for (let i = 0; i < tags.length; i++) {
@@ -50,13 +54,13 @@ function displayPhotographes(photographes) {
 }
 
 
-function realisationPhotographeItem(item,folder) {
+function realisationPhotographeItem(item,folder,index) {
         const realisationItemContainer = document.createElement("div");
         realisationItemContainer.classList.add("realisation__item");
         if(typeof item.image === "undefined"){
                 buidVideoRealisation(item,folder,realisationItemContainer);  
         }else{
-                buidImageRealisation(item,folder,realisationItemContainer);
+                buidImageRealisation(item,folder,realisationItemContainer,index);
         }
 }
 
@@ -67,17 +71,20 @@ function realisationPhotographeItem(item,folder) {
  *  @param{*} realisationItemContainer
  */
 function buidVideoRealisation(item,folder,realisationItemContainer){
-        realisationItemContainer.innerHTML = `<div class="realisation__item__img__container">
-        <video controls>
+        realisationItemContainer.innerHTML = `<div class="realisation__item__img__container  ">
+        <div class="videos">
+        <i class="fas fa-play video-icon"></i>
+        <video controls class="video">
               <source src="./../assets/img/${folder}/${item.video}" type="video/mp4">
               <p>Votre navigateur ne supporte pas la lecture de vidéo HTML5.</p>
         </video>
+        </div>
     </div>
     <div class="realisation__item__detail">
        <p class="realisation__item__detail__tagname">${item.title}</p>
          <div class="realisation__item__detail__like">
            <span class="realisation__item__detail__like__compteur">${item.likes}</span>
-           <span class="realisation__item__detail__like__img"><i class="fas fa-heart"></i></span>
+           <span class="realisation__item__detail__like__img"><i class="far fa-heart like-icon" id="${item.id}"></i></span>
          </div>
      </div>`;
 document.querySelector(".realisations").appendChild(realisationItemContainer);
@@ -91,18 +98,29 @@ document.querySelector(".realisations").appendChild(realisationItemContainer);
  *  @param{*} folder
  *  @param{*} realisationItemContainer
  */
-function buidImageRealisation(item,folder,realisationItemContainer){
+function buidImageRealisation(item,folder,realisationItemContainer,index){
         realisationItemContainer.innerHTML = `<div class="realisation__item__img__container">
-        <img src="./../assets/img/${folder}/${item.image}" class="realisation__item__img" alt="une réalisation de ${item.image}">
+        <img src="./../assets/img/${folder}/${item.image}" class="realisation__item__img hover-shadow" onclick="currentSlide(${index + 1})"  alt="une réalisation de ${item.image}">
    </div>
    <div class="realisation__item__detail">
           <p class="realisation__item__detail__tagname">${item.title}</p>
           <div class="realisation__item__detail__like">
               <span class="realisation__item__detail__like__compteur">${item.likes}</span>
-              <span class="realisation__item__detail__like__img"><i class="fas fa-heart"></i></span>
+              <span class="realisation__item__detail__like__img"><i class="far fa-heart like-icon" id="${item.id}" ></i></span>
           </div>
    </div>`;
 document.querySelector(".realisations").appendChild(realisationItemContainer);
+}
+
+
+
+function displayRealisationsPhothographe(currentPhotographeRealisations,totalLikes,realisationPhotographeFolderImage) {
+        for (let i = 0; i < currentPhotographeRealisations.length; i++) {
+                const element = currentPhotographeRealisations[i];
+                totalLikes += element.likes
+                realisationPhotographeItem(element,realisationPhotographeFolderImage, i);
+         }  
+         return totalLikes;   
 }
 
 function getAllMediaByPhotographeID(allTags, photographeId) {
@@ -134,20 +152,34 @@ function buildFilter() {
 
         const elements = document.createElement("div");
         elements.classList.add("trier");
-        elements.innerHTML = `<div class="trier__item">
+        elements.innerHTML = `<div class="trier__item popularite">
                                   Popularité <i class="fas fa-angle-left"></i>
                                 </div>
-                                <div class="trier__item">
+                                <div class="trier__item date">
                                         Date <i class="fas fa-angle-left"></i>
                                 </div>
-                                <div class="trier__item">
+                                <div class="trier__item titre">
                                          Titre <i class="fas fa-angle-left"></i>
                                 </div>`;
         document.querySelector(".filter-section").appendChild(title);
         document.querySelector(".filter-section").appendChild(elements);    
 }
 
+function displayAfterLikeOrUnLike(currentPhotographeRealisations,totalLikes,salaryPerDay,realisationPhotographeFolderImage) {
+        for (let i = 0; i < currentPhotographeRealisations.length; i++) {
+                const element = currentPhotographeRealisations[i];
+                totalLikes += element.likes
+               //  console.log(totalLikes);
+                realisationPhotographeItem(element,realisationPhotographeFolderImage);
+                buildStatistiquePhotographe(totalLikes,salaryPerDay);
+           } 
+        
+}
 
+
+function openModal() {
+        document.getElementById("myModal").style.display = "block";
+      }
 
         export {builPhotographeTags}
         export {photographeItem}
@@ -157,4 +189,7 @@ function buildFilter() {
         export {getPhotographeByID}
         export {displayPhotographes}
         export {buildFilter}
+        export {openModal}
+        export {displayAfterLikeOrUnLike}
+        export {displayRealisationsPhothographe}
    

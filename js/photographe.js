@@ -201,6 +201,7 @@ var playButton = document.querySelector(".video-icon");
 playButton.addEventListener("click", ()=> {
       // Si la vidéo est en pause, on la lance
       if (video.paused) {
+        openModal();
         video.play();
       //   playButton.style.zIndex = "0";
       }

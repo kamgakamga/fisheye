@@ -11,7 +11,7 @@ function openModal() {
           slide.innerHTML= `<div class="numbertext">${index + 1} / ${lengthTab}</div>
                                <div class="videos">
                                     <i class="fas fa-play video-icon"></i>
-                                    <video controls class="video">
+                                    <video class="video">
                                           <source src="./../assets/img/${folder}/${item.video}" type="video/mp4">
                                           <p>Votre navigateur ne supporte pas la lecture de vidéo HTML5.</p>
                                     </video>
@@ -19,7 +19,7 @@ function openModal() {
                    document.querySelector(".modal-content").appendChild(slide); 
         } else{
             slide.innerHTML= `<div class="numbertext">${index + 1} / ${lengthTab}</div>
-                              <img src="./../assets/img/${folder}/${item.image}" style="width:100%">`;
+                              <img src="./../assets/img/${folder}/${item.image}" style="width:100%" alt="image de la ligthbox">`;
              document.querySelector(".modal-content").appendChild(slide); 
         }                   
       }

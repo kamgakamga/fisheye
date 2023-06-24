@@ -75,7 +75,7 @@ function buidVideoRealisation(item,folder,realisationItemContainer){
         <div class="videos">
         <i class="fas fa-play video-icon"></i>
         <video class="video">
-              <source src="./../assets/img/${folder}/${item.video}" type="video/mp4">
+              <source src="/assets/img/${folder}/${item.video}" type="video/mp4">
               <p>Votre navigateur ne supporte pas la lecture de vidéo HTML5.</p>
         </video>
         </div>
@@ -100,7 +100,7 @@ document.querySelector(".realisations").appendChild(realisationItemContainer);
  */
 function buidImageRealisation(item,folder,realisationItemContainer,index){
         realisationItemContainer.innerHTML = `<div class="realisation__item__img__container">
-        <img src="./../assets/img/${folder}/${item.image}" class="realisation__item__img hover-shadow" onclick="currentSlide(${index + 1})"  alt="une réalisation de ${item.image}">
+        <img src="/assets/img/${folder}/${item.image}" class="realisation__item__img hover-shadow" onclick="currentSlide(${index + 1})"  alt="une réalisation de ${item.image}">
    </div>
    <div class="realisation__item__detail">
           <p class="realisation__item__detail__tagname">${item.title}</p>

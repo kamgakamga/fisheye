@@ -25,17 +25,17 @@ let formContact = document.createElement("div");
                                         <form action="" class="form-contact" method="post">
                                         <div class="form-group">
                                                 <label for="prenom" class="prenom">Prénom</label><br>
-                                                <input type="text" name="prenom" id="prenom">
+                                                <input type="text" name="prenom" required id="prenom">
                                         </div>
 
                                         <div class="form-group">
                                                 <label for="nom" class="nom">Nom</label><br>
-                                                <input type="text" name="nom" id="nom">
+                                                <input type="text" name="nom" required id="nom">
                                         </div>
 
                                         <div class="form-group">
                                                 <label for="email" class="email">Email</label><br>
-                                                <input type="email" name="email" id="email">
+                                                <input type="email" name="email" required id="email">
                                         </div> 
 
                                         <div class="form-group">

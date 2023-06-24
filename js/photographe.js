@@ -78,8 +78,6 @@ let currentPhotographeRealisations = getAllMediaByPhotographeID(medias, photogra
    salaryPerDay += photographe.price;
    buildStatistiquePhotographe(tls,salaryPerDay);
 
-   let mediaId;
-   let media;
    const allReal = document.querySelectorAll('.realisation__item__detail__like__img');
    allReal.forEach((real) => {
       let compter = 0;
@@ -134,9 +132,6 @@ if (compt === 0) {
       document.querySelector(".titre").style.display='none'; 
       const  currentPhotographeRealisationCopie = Array.from(currentPhotographeRealisations);
       currentPhotographeRealisationCopie.sort((a, b) => b.likes - a.likes );
-console.log('**********************************');
-      console.log(currentPhotographeRealisationCopie);
-console.log('**********************************');
       const r = document.querySelector(".realisations");
       r.innerHTML ="";
       displayRealisationsPhothographe(currentPhotographeRealisationCopie,totalLikes,realisationPhotographeFolderImage);
@@ -190,6 +185,7 @@ playButton.addEventListener("click", ()=> {
       if (video.paused) {
         openModal();
         video.play();
+        playButton.style.display = "none";
       //   playButton.style.zIndex = "0";
       }
 } );

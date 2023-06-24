@@ -70,12 +70,12 @@ function realisationPhotographeItem(item,folder,index) {
  *  @param{*} folder
  *  @param{*} realisationItemContainer
  */
-function buidVideoRealisation(item,folder,realisationItemContainer){
+function buidVideoRealisation(item,folder,realisationItemContainer,index){
         realisationItemContainer.innerHTML = `<div class="realisation__item__img__container  ">
         <div class="videos">
         <i class="fas fa-play video-icon"></i>
-        <video class="video" autoplay>
-              <source src="assets/img/${folder}/${item.video}" type="video/mp4">
+        <video class="video">
+              <source src="assets/img/${folder}/${item.video}" type="video/mp4" onclick="currentSlide(${index + 1})>
               <p>Votre navigateur ne supporte pas la lecture de vidéo HTML5.</p>
         </video>
         </div>

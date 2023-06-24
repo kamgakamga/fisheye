@@ -11,7 +11,6 @@ function openModal() {
         if(typeof item.image === "undefined"){
           slide.innerHTML= `<div class="numbertext">${index + 1} / ${lengthTab}</div>
                                <div class="videos">
-                                    <i class="fas fa-play video-icon"></i>
                                     <video class="video">
                                           <source src="/assets/img/${folder}/${item.video}" type="video/mp4">
                                           <p>Votre navigateur ne supporte pas la lecture de vidéo HTML5.</p>

@@ -6,12 +6,15 @@
 
 .form-content {
   background-color: #D3573C;
-  padding: 15px;
+  display: flex;
+  align-content: center;
+  align-items: center;
 }
 
 .contactez {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 .contactez .fas {
   color: #FFFFFF;

@@ -19,14 +19,14 @@ function buildProfileItem(photographe,tagItem) {
         articlePhotographe.classList.add("photographe__item");
         articlePhotographe.innerHTML = ` <div class="photographe__container__photo">
                               <a href="./photographe.html?id=${photographe.id}" class="lien">
-                                      <img src="./assets/img/PhotographersIDPhotos/${photographe.portrait}" alt="photo de profile du photographe${name}" class="photographe__container__photo__img">
+                                      <img src="./assets/img/PhotographersIDPhotos/${photographe.portrait}" alt="photo de profil du photographe ${photographe.name}" class="photographe__container__photo__img">
                               </a></div>
                                <div class="photographe__detail__container">
                                <p class="photographe__detail__container__name">${photographe.name}</p>
                                <div class="photographe__detail__container__description">
-                                       <p class="photographe__detail__container__description__localisation">${photographe.country}, ${photographe.city}</p>
-                                       <p class="photographe__detail__container__description__texte">${photographe.tagline}</p>
-                                       <p class="photographe__detail__container__description__price">${photographe.price}<strong>€</strong>/jour</p>
+                                       <p class="photographe__detail__container__description__localisation" tabindex="-1">${photographe.country}, ${photographe.city}</p>
+                                       <p class="photographe__detail__container__description__texte" tabindex="-1">${photographe.tagline}</p>
+                                       <p class="photographe__detail__container__description__price" tabindex="-1">${photographe.price}<strong>€</strong>/jour</p>
                                </div>
                                <ul class="photographe__detail__container__tags">
                                ${tagItem}
@@ -152,13 +152,13 @@ function buildFilter() {
 
         const elements = document.createElement("div");
         elements.classList.add("trier");
-        elements.innerHTML = `<div class="trier__item popularite">
+        elements.innerHTML = `<div class="trier__item popularite" aria-label="tri des réalisation du photographe par popularités">
                                   Popularité <i class="fas fa-angle-left"></i>
                                 </div>
-                                <div class="trier__item date">
+                                <div class="trier__item date" aria-label="tri des réalisation du photographe par date">
                                         Date <i class="fas fa-angle-left"></i>
                                 </div>
-                                <div class="trier__item titre">
+                                <div class="trier__item titre" aria-label="tri des réalisation du photographe par titre">
                                          Titre <i class="fas fa-angle-left"></i>
                                 </div>`;
         document.querySelector(".filter-section").appendChild(title);

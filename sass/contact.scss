@@ -15,16 +15,19 @@ $couleur_label: #312E2E;
 
 .form-content{
         background-color: $couleur_primaires;
-        padding: 15px;
-        // display: flex;
-        // //flex-direction: column;
-        // align-content: center;
-        // align-items: center;
+        // background-color: $couleur_primaires;
+        // padding: 15px;
+        display: flex;
+        //flex-direction: column;
+        align-content: center;
+        align-items: center;
 }
 
 .contactez{
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
+        justify-content: center;
+        align-items: center;
         .fas{
                 color: $couleur_blanche;
         }

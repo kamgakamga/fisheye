@@ -2,6 +2,7 @@
 function openModal() {
               document.querySelector(".my-modal").style.display = "block";
               console.log("modal is open !!!");
+              document.querySelector(".my-modal").focus();
       }
 
       function buildSlideLightbox(item, index,lengthTab,folder) {
@@ -26,12 +27,12 @@ function openModal() {
 
       function buildBtnNext() {
         const liks = document.createElement("a");
-        liks.innerHTML = `<i class="fas fa-angle-left next" onclick = "plusSlides(1);"></i>`;
+        liks.innerHTML = `<i class="fas fa-angle-left next" tabIndex="0" aria-label="navigation à la prochaine image" onclick = "plusSlides(1);"></i>`;
         document.querySelector(".modal-content").appendChild(liks);
       }
       function buildBtnPrev() {
         const liks = document.createElement("a");
-        liks.innerHTML = `<i class="fas fa-angle-left prev" onclick = "plusSlides(-1);"></i>`;
+        liks.innerHTML = `<i class="fas fa-angle-left prev tabIndex="0" aria-label="navigation vers l'image précédente" onclick = "plusSlides(-1);"></i>`;
         document.querySelector(".modal-content").appendChild(liks);
       }
 
@@ -39,10 +40,12 @@ function openModal() {
         const closeModal= document.createElement("span");
               closeModal.classList.add("close");
               closeModal.classList.add("cursor");
-        const closeIcon= document.createElement("i");
+        let closeIcon= document.createElement("i");
               closeIcon.classList = "fas fa-times close-modal";
+              closeIcon.setAttribute('tabindex','0');
+              closeIcon.setAttribute('aria-label','ouverture de la lightbox');
         let modalContent = document.createElement("div");
-        modalContent.classList.add("modal-content");
+        modalContent.classList.add("modal-content");  
         document.querySelector(".my-modal").appendChild(modalContent); 
         document.querySelector(".modal-content").appendChild(closeModal); 
         document.querySelector(".close").appendChild(closeIcon); 

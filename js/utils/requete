@@ -1,0 +1,40 @@
+ create table `fin_inscription_en_avance` (`id_ins_a` bigint not null auto_increment, `date_creation` datetime, `date_modif` datetime, `forwarded` char(1), `util_creation` varchar(255), `util_modif` varchar(255), `version` bigint, `code_acces` varchar(6), `date_admission` datetime, `date_naissance` datetime, `date_operation` datetime, `eleve_transferer` bit not null, `email_eleve` varchar(255), `email_parent` varchar(100), `handicape` bit not null, `inscrit` bit not null, `lieu_naissance` varchar(100), `matricule` varchar(50), `montant_verse` double precision not null, `nationalite` varchar(100), `nom_eleve` varchar(100), `nom_mere` varchar(100), `nom_parent` varchar(100), `numero_eleve` integer not null, `operateur` varchar(100), `photo` varchar(255), `prenom_eleve` varchar(100), `religion` varchar(15), `residence_eleve` varchar(100), `residence_parent` varchar(100), `sexe` char(1) not null, `statut` varchar(255), `statut_accompte` bit, `telephone_eleve` varchar(255), `telephone_mere` varchar(15), `telephone_parent` varchar(15), `telephone_pere` varchar(255), `transfert` bit not null, `id_classe` integer, primary key (`id_ins_a`)) engine=InnoDB
+ 
+ alter table `grad_eleve` add column `code_acces` varchar(6)
+ alter table `grad_eleve` add column `telephone_pere` varchar(255)
+ alter table `grad_eleve` add column `id_utilisateur_portail` bigint
+ alter table `grad_enseignant` add column `code_acces` varchar(255)
+ create table `log_historique_absence` (`id_historique_absence_eleve` bigint not null auto_increment, `annee` varchar(255), `classe` varchar(255), `date_operation` datetime, `matricule` varchar(255), `nom_utilisateur_implique` varchar(255), `nombre_heure_abscence` integer not null, `nombre_heure_abscencej` integer not null, `noms_eleve` varchar(255), `operation` varchar(255), `sequence` integer not null, primary key (`id_historique_absence_eleve`)) engine=InnoDB
+ create table `log_historique_eleve_finance` (`id_historique_eleve_finance` bigint not null auto_increment, `date_creation` datetime, `date_modif` datetime, `forwarded` char(1), `util_creation` varchar(255), `util_modif` varchar(255), `version` bigint, `caisse` varchar(255), `code_annee` varchar(255), `date_operation` datetime, `id_annee` integer not null, `id_classe_eleve` integer not null, `id_utilisateur_implique` bigint, `matricule_eleve_piece_identite` varchar(255), `montant` double precision, `nom_classe_motif` varchar(255), `nom_utilisateur_implique` varchar(255), `noms_eleve_partie_versante` varchar(255), `operation_effectue` varchar(255), `type_operation` integer not null, primary key (`id_historique_eleve_finance`)) engine=InnoDB
+ create table `log_historique_eleve_note` (`id_historique_eleve_note` bigint not null auto_increment, `code_annee` varchar(255), `date_operation` datetime, `id_annee` integer not null, `id_classe_eleve` integer not null, `id_matiere` integer not null, `id_matiere_classe` integer not null, `id_sequence` integer not null, `id_utilisateur_implique` bigint, `matricule_eleve` varchar(255), `nom_classe_eleve` varchar(255), `nom_matiere` varchar(255), `nom_sequence` varchar(255), `nom_utilisateur_implique` varchar(255), `noms_eleve` varchar(255), `note_actuel` double precision not null, `note_precedent` double precision not null, `observation_actuel` varchar(255), `observation_precedent` varchar(255), primary key (`id_historique_eleve_note`)) engine=InnoDB
+ alter table `log_sms_message` add column `annee_en_cours` integer not null
+ alter table `log_sms_message` add column `code_response` integer not null
+ alter table `log_sms_message` add column `matricule` varchar(255)
+ alter table `log_sms_message` add column `nom_classe` varchar(50)
+ alter table `log_sms_message` add column `sequence` varchar(255)
+ create table `prm_config_inscription` (`id_config_inscription` bigint not null auto_increment, `date_creation` datetime, `date_modif` datetime, `forwarded` char(1), `util_creation` varchar(255), `util_modif` varchar(255), `version` bigint, `montant_min` double precision, `id_annee` integer, `id_niveau` integer, primary key (`id_config_inscription`)) engine=InnoDB
+
+
+ alter table `prm_etat_imprimable` add column `description_en` varchar(5000) not null
+ alter table `prm_etat_imprimable` add column `libelle_en` varchar(100) not null
+ alter table `sys_filtre` add column `libelle_en` varchar(100) not null
+ alter table `com_matiere_classe` drop index uk_matiere_classe
+ alter table `com_matiere_classe` add constraint uk_matiere_classe unique (`id_annee`, `id_classe`, `id_enseignant`, `id_matiere`)
+ alter table `com_utilisateur_portail` drop index UK_jqyxo47hjnmmbtvae5v91bw49
+ alter table `com_utilisateur_portail` add constraint UK_jqyxo47hjnmmbtvae5v91bw49 unique (`code_acces`)
+ alter table `com_utilisateur_portail` drop index UK_fy5v2mbvja5uhcwnx52k514s8
+ alter table `com_utilisateur_portail` add constraint UK_fy5v2mbvja5uhcwnx52k514s8 unique (`identifiant_portail`)
+ alter table `grad_enseignant` drop index UK_k9pkpxiw6cwysxm7vus6kkk3c
+ alter table `grad_enseignant` add constraint UK_k9pkpxiw6cwysxm7vus6kkk3c unique (`code_acces`)
+ alter table `prm_config_inscription` drop index UK_NIVEAU_ANNEE
+ alter table `prm_config_inscription` add constraint UK_NIVEAU_ANNEE unique (`id_niveau`, `id_annee`)
+ alter table `fin_inscription_en_avance` add constraint `FKij3khub7m9nl5ayvu9n9xtlxs` foreign key (`id_classe`) references `com_classe` (`id_classe`)
+ alter table `grad_archivage` add constraint `FKofnshovhxcwnpvfvjlxd3x7jm` foreign key (`id_type_archivage`) references `sys_type_archivage` (`id_type_archivage`)
+ alter table `grad_archivage` add constraint `FKllq7lwdyilsaaseh9hcc578cv` foreign key (`id_utilisateur`) references `utilisateurs` (`user_id`)
+ alter table `grad_eleve` add constraint `FKgn0o8g1kr894bvlp5n9mpk5u` foreign key (`id_utilisateur_portail`) references `com_utilisateur_portail` (`id_utilisateur_portail`)
+ alter table `grad_sanction` add constraint `FK1symtto6s76b4hy3svsfy4yyp` foreign key (`id_classe`) references `com_classe` (`id_classe`)
+ alter table `grad_sanction` add constraint `FKncggah14kxkco130syjrkux5e` foreign key (`id_type_penalite`) references `prm_type_penalite` (`id_type_penalite`)
+ alter table `grad_temp_note` add constraint `FK1gx2dbx6exgafdsr7sackkyv8` foreign key (`id_matiereclasse`) references `com_matiere_classe` (`id_matiereclasse`)
+ alter table `grad_temp_note` add constraint `FK68hu21eoct0w5j14ui0ve890c` foreign key (`id_sequenc`) references `grad_sequence` (`id_sequence`)
+ alter table `prm_config_inscription` add constraint `FK3j5mdmtgt7s6ow6hvj5wf0v3l` foreign key (`id_annee`) references `com_annee` (`id_annee`)
+ alter table `prm_config_inscription` add constraint `FKtcnqdvpydvk23v8y7n4vjmrps` foreign key (`id_niveau`) references `com_niveau` (`id_niveau`)

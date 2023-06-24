@@ -12,7 +12,7 @@ import { getPhotographeId } from "./utils/filter.js";
 import { buildHeader } from "./utils/filter.js";
 import { splitWord } from "./utils/filter.js";
 import { like } from "./utils/like.js";
-import { unLike } from "./utils/like.js";
+import { disLike } from "./utils/like.js";
 import { getMediaById } from "./utils/media.js";
 import { openModal } from "./ligthbox.js";
 import { closeModal } from "./ligthbox.js";
@@ -72,7 +72,7 @@ let currentPhotographeRealisations = getAllMediaByPhotographeID(medias, photogra
    document.querySelector(".photographe__item").appendChild(contact);
 
 
-  const tls = displayRealisationsPhothographe(currentPhotographeRealisations,totalLikes,realisationPhotographeFolderImage);
+  let tls = displayRealisationsPhothographe(currentPhotographeRealisations,totalLikes,realisationPhotographeFolderImage);
   
   
    salaryPerDay += photographe.price;
@@ -80,37 +80,24 @@ let currentPhotographeRealisations = getAllMediaByPhotographeID(medias, photogra
 
    let mediaId;
    let media;
-   let compter = 0;
-   const allReal = document.querySelectorAll('.fa-heart');
+   const allReal = document.querySelectorAll('.realisation__item__detail__like__img');
    allReal.forEach((real) => {
+      let compter = 0;
    real.addEventListener('click', (event) => {
-      mediaId = event.target.id;
-      media =  getMediaById(medias, mediaId);
-//      console.log(media[0].likes +=1);
-      // const l = document.querySelector(".realisations");
-     // const l = document.querySelector(".fas");
-      // l.innerHTML = '';
+     const parent = event.currentTarget.parentNode;
+     const enfant = parent.firstElementChild;
 
-      if (compter === 0) {
-            event.target.classList.add("fas");
-            event.target.classList.remove("far");
-            // const newTabMedia = like(media[0]);
-            // currentPhotographeRealisations = getAllMediaByPhotographeID(newTabMedia, photographeId);
-             totalLikes = 0; 
-            compter ++; 
-            // displayAfterLikeOrUnLike(currentPhotographeRealisations,totalLikes,salaryPerDay,realisationPhotographeFolderImage);
-      } else {
-            event.target.classList.add("far");
-            event.target.classList.remove("fas");
-            // const newTabMedias = unLike(media[0]); 
-            // currentPhotographeRealisations = getAllMediaByPhotographeID(newTabMedias, photographeId);
-            totalLikes = 0; 
-            compter --;
-            // displayAfterLikeOrUnLike(currentPhotographeRealisations,totalLikes,salaryPerDay,realisationPhotographeFolderImage);
-      }
-//      const newRealisationPhotographe = getAllMediaByPhotographeID(newTabMedia, photographeId);
-     });
-   });
+    if (compter === 0){
+           like(event,enfant);
+           compter ++;
+           tls = tls + 1; 
+           buildStatistiquePhotographe(tls,salaryPerDay);      
+    } else {
+          disLike(event,enfant);
+          compter --;
+          tls = tls - 1; 
+          buildStatistiquePhotographe(tls,salaryPerDay);      
+    }});});
 
    const allImages = document.querySelectorAll('.realisation__item__img');
    allImages.forEach((image) => {
@@ -206,3 +193,21 @@ playButton.addEventListener("click", ()=> {
       //   playButton.style.zIndex = "0";
       }
 } );
+
+// Ecoute l'événement keydown sur la page
+document.addEventListener('keydown', (e) => {
+  // Si la touche appuyée est "Escape"
+  if (e.keyCode === 27) {
+    // Ferme la lightbox
+    closeModal();
+  }
+});
+
+// Ecoute l'événement keydown sur la page
+document.addEventListener('keydown', (e) => {
+  // Si la touche appuyée est "Escape"
+  if (e.keyCode === 27) {
+    // Ferme la lightbox
+    closeContact();
+  }
+});

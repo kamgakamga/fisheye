@@ -34,6 +34,8 @@ body.appendChild(footer)
 // Construction de l'entete de la page index 
 const headerLogo = document.createElement("div");
 headerLogo.classList.add("header__logo");
+headerLogo.setAttribute('tabIndex','0');
+headerLogo.setAttribute('aria-label','logo du site fisheye');
 const headerImg = document.createElement("img");
 headerImg.classList.add("header__logo__img");
 const headerMenu = document.createElement("nav");
@@ -41,14 +43,16 @@ headerMenu.classList.add("header__menu");
 const headerPhotographe = document.createElement("div");
 
 headerImg.src="./assets/img/logo/fisheye.png";
-headerImg.alt="Logo de fisheye";
+headerImg.alt="logo du site web fisheye";
+headerImg.setAttribute('tabIndex','0');
 headerMenu.appendChild(buidMenuFilter(afTags));
 headerPhotographe.innerText = "Nos photographes";
+headerPhotographe.setAttribute('tabIndex','11');
 headerPhotographe.classList.add("header__photographe");
 
 // Ajout des elements de l'entete a la balise header
 headerLogo.appendChild(headerImg);
-header.appendChild(headerLogo);
+header.appendChild(headerLogo);         
 header.appendChild(headerMenu);
 header.appendChild(headerPhotographe);
 

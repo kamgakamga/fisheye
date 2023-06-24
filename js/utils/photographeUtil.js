@@ -74,7 +74,7 @@ function buidVideoRealisation(item,folder,realisationItemContainer){
         realisationItemContainer.innerHTML = `<div class="realisation__item__img__container  ">
         <div class="videos">
         <i class="fas fa-play video-icon"></i>
-        <video class="video">
+        <video class="video" autoplay>
               <source src="assets/img/${folder}/${item.video}" type="video/mp4">
               <p>Votre navigateur ne supporte pas la lecture de vidéo HTML5.</p>
         </video>

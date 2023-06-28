@@ -58,7 +58,7 @@ function realisationPhotographeItem(item,folder,index) {
         const realisationItemContainer = document.createElement("div");
         realisationItemContainer.classList.add("realisation__item");
         if(typeof item.image === "undefined"){
-                buidVideoRealisation(item,folder,realisationItemContainer);  
+                buidVideoRealisation(item,folder,realisationItemContainer,index);  
         }else{
                 buidImageRealisation(item,folder,realisationItemContainer,index);
         }
@@ -71,11 +71,12 @@ function realisationPhotographeItem(item,folder,index) {
  *  @param{*} realisationItemContainer
  */
 function buidVideoRealisation(item,folder,realisationItemContainer,index){
+        console.log("index:",index);
         realisationItemContainer.innerHTML = `<div class="realisation__item__img__container  ">
         <div class="videos">
-        <i class="fas fa-play video-icon"></i>
+        <i class="fas fa-play video-icon"  onclick="currentSlide(${index + 1})"></i>
         <video class="video">
-              <source src="assets/img/${folder}/${item.video}" type="video/mp4" onclick="currentSlide(${index + 1})>
+              <source src="assets/img/${folder}/${item.video}" type="video/mp4">
               <p>Votre navigateur ne supporte pas la lecture de vidéo HTML5.</p>
         </video>
         </div>

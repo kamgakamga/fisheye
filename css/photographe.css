@@ -422,4 +422,9 @@ textarea {
   color: #FFFFFF;
 }
 
+.lightbox__image {
+  width: 100px;
+  height: 100px;
+}
+
 /*# sourceMappingURL=photographe.css.map */

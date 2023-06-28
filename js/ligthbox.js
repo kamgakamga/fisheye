@@ -11,7 +11,7 @@ function openModal() {
         if(typeof item.image === "undefined"){
           slide.innerHTML= `<div class="numbertext">${index + 1} / ${lengthTab}</div>
                                <div class="videos">
-                                    <video class="video" autoplay>
+                                    <video class="video" controls autoplay>
                                           <source src="assets/img/${folder}/${item.video}" type="video/mp4">
                                           <p>Votre navigateur ne supporte pas la lecture de vidéo HTML5.</p>
                                     </video>
@@ -20,7 +20,7 @@ function openModal() {
                    console.log("Lecture automatique.");
         } else{
             slide.innerHTML= `<div class="numbertext">${index + 1} / ${lengthTab}</div>
-                              <img src="assets/img/${folder}/${item.image}" style="width:100%" alt="image de la ligthbox">`;
+                              <img src="assets/img/${folder}/${item.image}" class="lightbox__image" alt="image de ${item.image}">`;
              document.querySelector(".modal-content").appendChild(slide); 
         }                   
       }

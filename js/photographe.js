@@ -182,8 +182,12 @@ var playButton = document.querySelector(".video-icon");
 // On ajoute un listener sur l'icône pour détecter le clic de l'utilisateur
 playButton.addEventListener("click", ()=> {
       // Si la vidéo est en pause, on la lance
-    video.paused?video.play(): video.pause()
-} );
+      if (video.paused) {
+            video.play();
+            openModal(); 
+      } else {
+            video.pause();  
+      }});
 
 // Ecoute l'événement keydown sur la page
 document.addEventListener('keydown', (e) => {

@@ -28,7 +28,6 @@
   height: 300px;
   overflow: hidden;
   border-radius: 5px;
-  background-color: #000000;
 }
 
 .realisation__item__img__container__img {
@@ -79,10 +78,9 @@
 .trier__item {
   color: #FFFFFF;
   background-color: #901C1C;
-  padding: 15px;
+  padding: 10px;
   width: 120px;
   border-bottom: 1px solid #FFFFFF;
-  border-radius: 5px;
   font-family: sans-serif;
   font-weight: 500;
 }
@@ -106,11 +104,19 @@
   display: inline-block;
 }
 
+.filter-section {
+  position: relative;
+}
 .filter-section .trier {
-  background-color: #901C1C;
-  width: 11%;
   border-radius: 5px;
+  width: 11%;
+  border-radius: 0px;
   cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  margin-top: 30px;
+  z-index: 5;
+  margin-left: 5px;
 }
 .filter-section .trier__item {
   color: #FFFFFF;
@@ -129,15 +135,15 @@
 }
 
 .popularite {
-  display: block;
+  visibility: visible;
 }
 
 .date {
-  display: none;
+  visibility: hidden;
 }
 
 .titre {
-  display: none;
+  visibility: hidden;
 }
 
 .header {
@@ -197,7 +203,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 .realisations .realisation__item {
   width: 30%;
@@ -425,6 +431,11 @@ textarea {
 .lightbox__image {
   width: 100px;
   height: 100px;
+}
+
+h3 {
+  margin-top: 30px;
+  display: inline-block;
 }
 
 /*# sourceMappingURL=photographe.css.map */

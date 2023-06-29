@@ -37,7 +37,7 @@ $couleur_label: #312E2E;
         height: 300px;
         overflow: hidden;
         border-radius: 5px;
-        background-color: #000000;
+     //   background-color: #000000;
       }
       .realisation__item__img__container__img {
         width: 100%;
@@ -83,10 +83,10 @@ $couleur_label: #312E2E;
       .trier__item {
         color: #FFFFFF;
         background-color: #901C1C;
-        padding: 15px;
+        padding: 10px;
         width: 120px;
         border-bottom: 1px solid #FFFFFF;
-        border-radius: 5px;
+        // border-radius: 5px;
         font-family: sans-serif;
         font-weight: 500;
       }
@@ -110,11 +110,19 @@ $couleur_label: #312E2E;
         display:inline-block;
       }
       .filter-section{
+        position: relative;
             .trier{
-              background-color:$couleur_primaire;
-              width: 11%;
+              // background-color:$couleur_primaire;
+              // background-color:#000000;
               border-radius: 5px;
-              cursor: pointer;
+               width: 11%;
+               border-radius: 0px;
+               cursor: pointer;
+               position: absolute;
+               display: inline-block;
+               margin-top: 30px;
+               z-index: 5;
+               margin-left:5px;
               &__item{
                     // display: none;
                     color: $couleur_blanche;
@@ -135,13 +143,17 @@ $couleur_label: #312E2E;
     }
 
     .popularite{
-      display: block;
+      visibility: visible;
+      
+      // display: block;
     }
     .date{
-      display: none;
+      visibility: hidden;
+      // display: none;
     }
     .titre{
-      display: none;
+      visibility: hidden;
+      // display: none;
     }
 
 .header{
@@ -203,7 +215,7 @@ $couleur_label: #312E2E;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-top: 10px;
+     margin-top: 30px;
   
   .realisation__item{
       width: 30%;
@@ -406,11 +418,6 @@ img.hover-shadow {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-
-
-
-
-
 .form-content{
   background-color: $couleur_primaires;
   padding: 15px;
@@ -509,4 +516,9 @@ textarea{
 .lightbox__image{
   width: 100px;
   height: 100px;
+}
+
+h3{
+  margin-top: 30px;
+  display: inline-block;
 }

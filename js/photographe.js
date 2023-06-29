@@ -120,60 +120,62 @@ closeContacte.addEventListener('click',()=> {
       closeContact();
 });
 
-let compt = 0;
+
 const popularite = document.querySelector('.popularite');
+popularite.addEventListener('mouseover',()=> {
+      document.querySelector(".date").style.display = 'block';
+      document.querySelector(".titre").style.display = 'block';
+      document.querySelector(".date").style.visibility = 'visible';
+      document.querySelector(".titre").style.visibility = 'visible'; 
+});
+
+//let compt = 0;
 popularite.addEventListener('click',()=> {
-if (compt === 0) {
-      document.querySelector(".date").style.display='block';
-      document.querySelector(".titre").style.display='block'; 
-      compt ++; 
-} else {
-      document.querySelector(".date").style.display="none";
-      document.querySelector(".titre").style.display='none'; 
-      const  currentPhotographeRealisationCopie = Array.from(currentPhotographeRealisations);
-      currentPhotographeRealisationCopie.sort((a, b) => b.likes - a.likes );
-      const r = document.querySelector(".realisations");
-      r.innerHTML ="";
-      displayRealisationsPhothographe(currentPhotographeRealisationCopie,totalLikes,realisationPhotographeFolderImage);
-      compt --;    
-}});
+      document.querySelector(".date").style.display = 'none';
+      document.querySelector(".titre").style.display = 'none';
+       const  currentPhotographeRealisationCopie = Array.from(currentPhotographeRealisations);
+       currentPhotographeRealisationCopie.sort((a, b) => b.likes - a.likes );
+       const r = document.querySelector(".realisations");
+       r.innerHTML ="";
+       displayRealisationsPhothographe(currentPhotographeRealisationCopie,totalLikes,realisationPhotographeFolderImage);
+});
 
-
-let comptd = 0;
 const date = document.querySelector('.date');
+date.addEventListener('mouseover',()=> {
+      document.querySelector(".titre").style.display = 'block';
+            document.querySelector(".popularite").style.display = 'block';
+      document.querySelector(".titre").style.visibility = 'visible';
+      document.querySelector(".popularite").style.visibility = 'visible'; 
+});
+
 date.addEventListener('click',()=> {
-      if (comptd === 0) {
-            document.querySelector(".popularite").style.display='block';
-            document.querySelector(".titre").style.display='block'; 
-            comptd ++; 
-      } else {
-            document.querySelector(".popularite").style.display='none';
-            document.querySelector(".titre").style.display='none'; 
+            document.querySelector(".titre").style.display = 'none';
+            document.querySelector(".popularite").style.display = 'none';  
             const  currentPhotographeRealisationCopie = Array.from(currentPhotographeRealisations);
             currentPhotographeRealisationCopie.sort((a, b) => b.date - a.date );
             const r = document.querySelector(".realisations");
             r.innerHTML ="";
             displayRealisationsPhothographe(currentPhotographeRealisationCopie,totalLikes,realisationPhotographeFolderImage);
             comptd --;    
-      }});
-let comptt = 0;
+});
+
 const titre = document.querySelector('.titre');
+titre.addEventListener('mouseover',()=> {
+      document.querySelector(".date").style.display = 'block';
+      document.querySelector(".popularite").style.display = 'block'; 
+      document.querySelector(".date").style.visibility = 'visible';
+      document.querySelector(".popularite").style.visibility = 'visible'; 
+});
+
 titre.addEventListener('click',()=> {
-      console.log("title");
-      if (comptt === 0) {
-            document.querySelector(".popularite").style.display='block';
-            document.querySelector(".date").style.display='block'; 
-            comptt ++; 
-      } else {
-            document.querySelector(".popularite").style.display='none';
-            document.querySelector(".date").style.display='none'; 
+      document.querySelector(".date").style.display = 'none';
+      document.querySelector(".popularite").style.display = 'none'; 
             const  currentPhotographeRealisationCopie = Array.from(currentPhotographeRealisations);
             currentPhotographeRealisationCopie.sort((a, b) => a.title - b.title );
             const r = document.querySelector(".realisations");
             r.innerHTML ="";
-            displayRealisationsPhothographe(currentPhotographeRealisationCopie,totalLikes,realisationPhotographeFolderImage);
-            comptt --;    
-      }});
+            displayRealisationsPhothographe(currentPhotographeRealisationCopie,totalLikes,realisationPhotographeFolderImage);  
+});
 
 // On récupère la référence vers la vidéo et l'icône
 var video = document.querySelector(".video");
